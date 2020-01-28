@@ -1,4 +1,4 @@
-# Exercice 1 : Code  Unit tests
+# Exercice 1 : Code & Unit tests
 
 The exercice purpose is to develop a script which returns as an output, the number of offers per profession category
 and by contract types from two csv files:
@@ -12,7 +12,7 @@ and by contract types from two csv files:
     | 2             | FULL_TIME     | Dev Full Stack  | 48.8768868      | 2.3091203        |
 
 2. *(INPUT)* The "technical-test-professions.csv" file contains a list of professional categroy (id references profession_id).
-  
+
     Example:
 
     | id | name | category_name |
