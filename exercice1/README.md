@@ -33,3 +33,12 @@ For this first exercise, you can use the language of your choice: Ruby, Elixir o
 Also, we expect for this exercise to see a minimum of unit tests.
 
 ## Solution
+    
+ Create a ruby gem **jungle_test** to generate the result matrix from these two csv files
+
+### Installation
+
+```ruby
+gem install jungle_test
+```
+### Usage
