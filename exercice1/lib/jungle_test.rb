@@ -1,4 +1,3 @@
-require 'jungle_test/version'
 require 'jungle_test/datatable'
 require 'jungle_test/professions'
 require 'jungle_test/matrix_builder'
