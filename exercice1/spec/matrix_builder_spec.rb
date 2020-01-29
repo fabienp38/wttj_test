@@ -9,7 +9,7 @@ RSpec.describe JungleTest::MatrixBuilder do
   subject(:matrix) { described_class.new(dt_jobs) }
 
   let(:headers) do
-    %w[EMPTY TOTAL FULL_TIME INTERN]
+    { empty: '', full_time: 'FULL_TIME', intern: 'INTERN', total: 'TOTAL' }
   end
 
   it 'checks the matrix headers' do
