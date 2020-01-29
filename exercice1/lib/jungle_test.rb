@@ -2,7 +2,7 @@ require 'jungle_test/version'
 require 'jungle_test/datatable'
 require 'jungle_test/professions'
 require 'jungle_test/matrix_builder'
-require 'jungle_test/draw_matrix'
+require 'jungle_test/matrix_draw'
 require 'fileutils'
 require 'csv'
 
@@ -32,22 +32,22 @@ module JungleTest
       end
 
       def draw_headers(columns)
-        JungleTest::DrawMatrix.puts_divider(columns)
-        JungleTest::DrawMatrix.puts_header(columns)
-        JungleTest::DrawMatrix.puts_divider(columns)
+        JungleTest::MatrixDraw.puts_divider(columns)
+        JungleTest::MatrixDraw.puts_header(columns)
+        JungleTest::MatrixDraw.puts_divider(columns)
       end
 
       def execute
         headers = build_content_matrix[:headers]
         content = build_content_matrix[:content]
-        columns = JungleTest::DrawMatrix.columns_spec(headers, content)
+        columns = JungleTest::MatrixDraw.columns_spec(headers, content)
         draw_headers(columns)
         res = {}
         content.each do |ct|
           headers.each_key { |key| res[key] = ct[key].to_s.upcase }
-          JungleTest::DrawMatrix.puts_line(res, columns)
+          JungleTest::MatrixDraw.puts_line(res, columns)
         end
-        JungleTest::DrawMatrix.puts_divider(columns)
+        JungleTest::MatrixDraw.puts_divider(columns)
       end
     end
   end

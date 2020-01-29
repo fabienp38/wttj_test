@@ -1,6 +1,6 @@
 module JungleTest
   # In this class we find the method to print the result matrix in the console
-  class DrawMatrix
+  class MatrixDraw
     class << self
       def puts_header(columns)
         puts "| #{columns.map { |_, g| g[:label].ljust(g[:width]) }
