@@ -1,10 +1,20 @@
 CSV_TEST = File.join(File.dirname(__FILE__).freeze, 'data/test.csv').freeze
 
 RSpec.describe JungleTest::DataTable do
+  let(:headers) { [:col1, :col2, :col3] } 
+
+  subject(:datatable) { JungleTest::DataTable.csv_to_datatable(CSV_TEST) }
+
   it 'checks the csv conversion to datatable' do
-    expect(JungleTest::DataTable.csv_to_datatable(CSV_TEST)).to match([
-      a_hash_including(col1: 'val', col2: '2', col3: 'AAAA'),
-      a_hash_including(col1:'res', col2: '3', col3: 'BBBB')
+    expect(datatable).to match_array([
+      {col1: 'val', col2: '2', col3: 'AAAA'},
+      {col1:'res', col2: '3', col3: 'BBBB'}
     ])
+  end
+
+  it 'checks the csv headers matches the hash keys' do
+    datatable.each do |hash|
+      expect(hash.keys).to contain_exactly(*headers)
+    end
   end
 end
