@@ -1,89 +1,68 @@
-# This code is licensed from CircleCI to the user under the MIT license. See
-# https://circleci.com/orbs/registry/licensing for details.
-commands:
-  install:
-    description: Install Ruby within a build. To be used in a Linux distro with Apt
-      available.
-    parameters:
-      version:
-        description: Ruby version.
-        type: string
-    steps:
-    - run:
-        command: |
-          # Determine if sudo is neccessary
-          SUDO=""
-          if [[ $EUID -ne 0 ]]; then
-            SUDO=sudo
-          fi
-
-          $SUDO apt-get update && $SUDO apt-get install -y ruby-full
-        name: Prep for RVM
-    - run:
-        command: |
-          # Fix for retrieving GPG over IPv6 issue
-          mkdir ~/.gnupg && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf
-          curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-          curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
-
-          curl -sSL "https://get.rvm.io" | bash -s stable
-          adduser $(whoami) rvm
-          source /etc/profile.d/rvm.sh
-          rvm install << parameters.version >>
-          rvm use << parameters.version >> default
-
-          echo 'source /etc/profile.d/rvm.sh' >> $BASH_ENV
-        name: Install Ruby v<< parameters.version >> via RVM
-  install-deps:
-    description: Install gems with Bundler.
-    steps:
-    - run: bundle install --path vendor/bundle
-  load-cache:
-    description: Load cached RubyGems.
-    parameters:
-      key:
-        default: gems-v1
-        description: The cache key to use. The key is immutable.
-        type: string
-    steps:
-    - restore_cache:
-        keys:
-        - << parameters.key >>-{{ checksum "Gemfile.lock"  }}
-  run-tests:
-    description: Test with RSpec. You have to add `gem 'rspec_junit_formatter'` to
-      your Gemfile.
-    steps:
-    - run: |
-        mkdir /tmp/test-results
-        TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-        bundle exec rspec $TESTFILES --profile 10 --format RspecJunitFormatter --out /tmp/test-results/rspec.xml --format progress
-    - store_test_results:
-        path: /tmp/test-results
-    - store_artifacts:
-        destination: test-results
-        path: /tmp/test-results
-  save-cache:
-    description: Save RubyGems to cache.
-    parameters:
-      key:
-        default: gems-v1
-        description: The cache key to use. The key is immutable.
-        type: string
-    steps:
-    - save_cache:
-        key: << parameters.key >>-{{ checksum "Gemfile.lock"  }}
-        paths:
-        - vendor/bundle
-description: |
-  Common CircleCI tasks for the Ruby programming language. Source: https://github.com/CircleCI-Public/ruby-orb
-executors:
-  default:
-    description: The official CircleCI Ruby Docker image.
-    docker:
-    - image: circleci/ruby:<< parameters.tag >>
-    parameters:
-      tag:
-        default: latest
-        description: The `circleci/ruby` Docker image version tag.
-        type: string
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
 version: 2.1
+
+commands:
+  build:
+    description: "Build and run the tests"
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - bundle-{{ checksum "cucumber.gemspec" }}
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: bundle-{{ checksum "cucumber.gemspec" }}
+
+  test:
+    description: "Run tests"
+    steps:
+      - run:
+          name: run tests
+          command: |
+            bundle exec rake
+  test_allow_failure:
+    description: "Run tests (allow failure so workflow is not marked as failed)"
+    steps:
+      - run:
+          name: run tests with allowed failure
+          command: |
+            set -o errexit
+            bundle exec rake
+            set -o errexit
+jobs:
+  build-ruby-2_4:
+    docker:
+      - image: circleci/ruby:2.4
+
+    working_directory: ~/repo
+    steps:
+      - build
+      - test
+
+workflows:
+  version: 2
+
+  nightly-build:
+    triggers:
+      - schedule:
+          cron: "0 5 * * *"
+          filters:
+            branches:
+              only:
+                - circleci
+
+    jobs:
+      - build-ruby-2_4
+
+  build:
+    jobs:
+      - build-ruby-2_3
