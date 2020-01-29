@@ -1,5 +1,6 @@
 require 'jungle_test/version'
 require 'jungle_test/datatable'
+require 'jungle_test/professions'
 require 'fileutils'
 require 'csv'
 
@@ -14,8 +15,14 @@ module JungleTest
   class Runner
     class << self
       def execute
-        dt_prof = JungleTest::DataTable.csv_to_datatable(CSV_PROF)
-        dt_cat_job = JungleTest::DataTable.csv_to_datatable(CSV_CAT_JOBS)
+        # Initialize datatable for two csv files
+        dt_p = JungleTest::DataTable.csv_to_datatable(CSV_PROF)
+        dt_j = JungleTest::DataTable.csv_to_datatable(CSV_CAT_JOBS)
+
+        # Create hash that contains profession category by id
+        cat = JungleTest::Professions.new(dt_p)
+        dt_merged = cat.merge_prof_contract(dt_j)
+        cat.total_by_contract_type(dt_merged)
       end
     end
   end
