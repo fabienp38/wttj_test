@@ -1,0 +1,7 @@
+example_id                         | status | run_time        |
+---------------------------------- | ------ | --------------- |
+./spec/datatable_spec.rb[1:1]      | passed | 0.00299 seconds |
+./spec/datatable_spec.rb[1:2]      | passed | 0.001 seconds   |
+./spec/matrix_builder_spec.rb[1:1] | passed | 0.00299 seconds |
+./spec/professions_spec.rb[1:1]    | passed | 0 seconds       |
+./spec/professions_spec.rb[1:2]    | passed | 0 seconds       |

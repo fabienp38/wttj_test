@@ -1,6 +1,7 @@
 require 'jungle_test/version'
 require 'jungle_test/datatable'
 require 'jungle_test/professions'
+require 'jungle_test/matrix_builder'
 require 'fileutils'
 require 'csv'
 
@@ -22,7 +23,9 @@ module JungleTest
         # Create hash that contains profession category by id
         cat = JungleTest::Professions.new(dt_p)
         dt_merged = cat.merge_prof_contract(dt_j)
-        cat.total_by_contract_type(dt_merged)
+        line_total = cat.total_by_contract_type(dt_merged)
+        mat = JungleTest::MatrixBuilder.new(dt_merged)
+        mat.content_line_matrix(line_total, dt_merged)
       end
     end
   end
