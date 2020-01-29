@@ -1,4 +1,4 @@
-# Exercice 1 : Code  Unit tests
+# Exercice 1 : Code & Unit tests
 
 The exercice purpose is to develop a script which returns as an output, the number of offers per profession category
 and by contract types from two csv files:
