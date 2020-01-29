@@ -19,7 +19,7 @@ and by contract types from two csv files:
     | -- | ------------- | --------------- |
     | 16 | Développement Fullstack     | Tech  |
  
-3. *(OUTPUT)* This an example of the expected matrix:
+3. *(OUTPUT)* This is an example of the expected matrix:
 
    Example:
 
@@ -40,11 +40,21 @@ Also, we expect for this exercise to see a minimum of unit tests.
 
 ## Solution
     
- Create a ruby gem **jungle_test** to generate the result matrix from these two csv files
+ Create a ruby script **jungle_test** to generate the result matrix from these two csv files
 
-### Installation
+### Get Started
 
-```ruby
-gem install jungle_test
-```
-### Usage
+1. Clone the repository wttj_test in a folder
+2. Open a terminal or a console in this folder repository.
+3. Move on exercice1 folder:
+    ```Bash
+    $ cd exercice1
+    ```
+4. In exercice1 folder install gem dependencies
+    ```Bash
+    $ bundle install
+    ```
+5. Execute jungle_test
+    ```Bash
+    $ ./bin/jungle_test
+    ```
