@@ -3,7 +3,8 @@ module JungleTest
   class DataTable
     class << self
       def csv_to_datatable(path_csv_file)
-        CSV.open(path_csv_file, headers: true, header_converters: :symbol)
+        param = { headers: true, header_converters: :symbol, encoding: 'UTF-8' }
+        CSV.open(path_csv_file, param)
            .map(&:to_h)
       end
     end
