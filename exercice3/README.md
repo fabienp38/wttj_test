@@ -1,6 +1,6 @@
 # Exercice3: Using Cypress
 
-Now that you have completed the perfect test plan, we want to put into practice a first test scenario using Cypress (if you are not comfortable with this tool, solutions such as Selenium or equivalent are possible: ))
+Now that you have completed the perfect test plan, we want to practice a first test scenario using Cypress (if you are not comfortable with this tool, solutions such as Selenium or equivalent are possible: ))
 
 The objective is to carry out some scenarios which test the creation of candidates on the dashboard side, via this form and implicitly the correct recording of information.
  
