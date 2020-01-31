@@ -149,6 +149,7 @@ NB: no code required for this exercice
   - Modify all fields and check that this candidate information are corectly saved:
     - Check update notification
     - Check the dashboard card has been updated with the new name
+  - Modify status and check in the pipeline that the card move to the right column
 
 **Public API Test:**
 - With the right permission, execute http request to update an existing cadidate
@@ -160,7 +161,7 @@ NB: no code required for this exercice
 - Test the screen displaying on different web browsers
 
 **Concurrent test**
-- Edit the same candidate by several recruiters, and update the information in same time
+- Edit the same candidate by several recruiters, and update  the same information (example status) in same time
 
 ## Requirement 6: Comment a candidate
 
@@ -206,7 +207,7 @@ NB: no code required for this exercice
 **Compatibiliy Test**
 - Test the screen displaying on different web browsers
 
-## Requirement 8: Send an email to the candidate
+## Requirement 8: Send an email to the candidate (bulk action)
 
 **Impact:**
  - UI
@@ -221,8 +222,11 @@ NB: no code required for this exercice
   - Add text
   - Add subject
   - Add attachment
-- Check the notification is created when you assign yourself to this application  
+- Check the notification is created when you assign yourself to this application
+  - check that the recruiter has been added to the list of notification
+  - check that the recruiter receives a mail when a mail is sent from the candidate
 - Send an email to the candidate with a template
+- Send an email to two candidates with the multiple action
 
 **Public API Test:**
 - With the right permission, execute http request to post an email
@@ -283,12 +287,21 @@ NB: no code required for this exercice
 **Concurrent test**
 - Add or modify the same candidate rate by several recruiters
 
-## Requirement 11: Change status to a candidate (bulk action)
+## Requirement 11: Change status for a candidate with the pipeline screen (bulk action)
 
 **Impact:**
  - UI
- - Public API
  - Concurrent action
+
+**UI Test  (Application Web) :**
+ - Move the candidate card to another status check that the status has changed for this candidate
+ - Check that you can't move with the drag and drop when the multiple action (bulk action) is activated
+ - Use the multiple action to change the status of two candidate cards:
+  -  Check that the candidate card are moved in the right column
+  -  Diplay candidate information for each moved candidate to check the status
+
+**Concurrent test**
+- Use the bulk action or the card to change/mowe in same time, the same candidate, by two recruiters
 
 ## Requirement 12: Move a candidate to another job stage (bulk action)
 
@@ -297,14 +310,8 @@ NB: no code required for this exercice
  - Public API
  - Concurrent action
 
-## Requirement 13: Move a candidate to another job stage (bulk action)
 
-**Impact:**
- - UI
- - Public API
- - Concurrent action
-
-## Requirement 14: Add a column to the pipeline
+## Requirement 13: Add a column to the pipeline
 
 **Impact:**
  - UI
