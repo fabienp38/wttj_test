@@ -225,6 +225,7 @@ NB: no code required for this exercice
 - Check the notification is created when you assign yourself to this application
   - check that the recruiter has been added to the list of notification
   - check that the recruiter receives a mail when a mail is sent from the candidate
+- Unfollow the candidate and check that the recruiter has been removed to the list of notification.
 - Send an email to the candidate with a template
 - Send an email to two candidates with the multiple action
 
@@ -267,6 +268,7 @@ NB: no code required for this exercice
  - UI
  - Concurrent action
 
+### Expected tests:
 **UI Test  (Application Web) :**
 - Check the UI elements on this screen (tab add a rating and modify the criteria rating)
     - To be checked with different language (french, english and other supported languages)
@@ -293,6 +295,7 @@ NB: no code required for this exercice
  - UI
  - Concurrent action
 
+### Expected tests:
 **UI Test  (Application Web) :**
  - Move the candidate card to another status check that the status has changed for this candidate
  - Check that you can't move with the drag and drop when the multiple action (bulk action) is activated
@@ -310,23 +313,62 @@ NB: no code required for this exercice
  - Public API
  - Concurrent action
 
+### Expected tests:
+**UI Test  (Application Web) :**
+ - With the candidate information screen move a candidate to another job stage
+  - Check that the candidate is moved in a right job stage
+ - With the multiple action move a candidate to another job stage
+  - Check that all the candidatare moved in a right job stage
 
-## Requirement 13: Add a column to the pipeline
+**Public API Test:**
+- With the right permission, execute http request to move a candidate to another job stage
+	 -  Check that the candidate is moved in a right job stage
+   -  check the mandatory query parameter
+ - With restricted permission, you are not allowed to move a candidate to another job stage
+
+**Concurrent test**
+- Move the same candidate to another job stage, by two recruiters in same time
+
+## Requirement 13: Archive a candidate to another job stage (bulk action)
 
 **Impact:**
  - UI
  - Public API
  - Concurrent action
 
-## Requirement 14: Remove a column to the pipeline 
+### Expected tests:
+**UI Test  (Application Web) :**
+ - With the candidate information screen archive a candidate 
+  - Check that the candidate is archived
+ - With the multiple action archive a candidate
+  - Check that all the candidatare are archived
+
+**Public API Test:**
+- With the right permission, execute http request to archive a candidate
+	 -  Check that the candidate is archived
+   -  check the mandatory query parameter
+ - With restricted permission, you are not allowed to archive a candidate 
+
+**Concurrent test**
+- Archive the same candidate, by two recruiters in same time
+
+## Requirement 14: Add a column to the pipeline
 
 **Impact:**
  - UI
- - Public API
- - Concurrent action
 
+### Expected tests:
+**UI Test  (Application Web) :**
+ - Add a status column to the pipeline
+  - Check that new column is diplayed in the pipeline
+  - Check that the new status has been added to dropdown list
 
+## Requirement 15: Remove a column to the pipeline 
 
+**Impact:**
+ - UI
 
-
-
+### Expected tests:
+**UI Test  (Application Web) :**
+ - Remove a status column to the pipeline
+ - Check that you are not allowed to remove status columns that contains candidate
