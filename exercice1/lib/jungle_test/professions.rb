@@ -11,7 +11,7 @@ module JungleTest
       @dt_prof = datatable_professions
     end
 
-    # Add category profession to for each line of the datatable jobs.
+    # Add category profession for each line of the datatable jobs.
     def merge_prof_contract(datatable_jobs)
       datatable_jobs.map do |job|
         job.merge(@category => prof_by_id[job[@profession_id]])
@@ -27,7 +27,7 @@ module JungleTest
 
     private
 
-    # Return a hash of profession group by id
+    # Return a hash of profession grouped by id
     def prof_by_id
       @dt_prof.group_by { |prof| prof[@id.to_sym] }
               .transform_values { |prof| prof.first[@category] }

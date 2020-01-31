@@ -6,6 +6,7 @@ module JungleTest
       @headers = {}
     end
 
+    # retrun a hash that containt the header value
     def matrix_headers
       list_contract_types.each do |ct|
         @headers[ct.downcase.to_sym] = (ct == 'EMPTY' ? '' : ct)
@@ -13,6 +14,7 @@ module JungleTest
       @headers
     end
 
+    # retrun a hash that contains each row of the table
     def content_line_matrix(line_total, dt_merged)
       { total: line_total }
         .merge(add_line_total(sum_by_cat_cont(dt_merged)))
