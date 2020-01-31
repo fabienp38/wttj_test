@@ -94,6 +94,7 @@ NB: no code required for this exercice
  - Public API
  - Compatibility
 
+### Expected tests:
 **UI Test  (Application Web) :**
  - Check the UI elements on this screen (Edit button, tabs, candidate info (firstname, lastname, picture email)...)
   - To be checked with different language (french, english and other supported languages)
@@ -136,6 +137,7 @@ NB: no code required for this exercice
  - Compatibility
  - Concurrent action
 
+### Expected tests:
 **UI Test  (Application Web) :**
 - Edit an exesting candidate and modify the personal information:
   - Check the UI elements on this screen (lastname, firstname, email, phone number, profile picture)
@@ -166,6 +168,7 @@ NB: no code required for this exercice
  - Public API
  - Concurrent action
 
+### Expected tests:
 **UI Test  (Application Web) :**
 - Create a new comment and check that the comment is created 
   - Check the comment is displayed and the comment are ordered by time
@@ -178,3 +181,53 @@ NB: no code required for this exercice
 
 **Concurrent test**
 - Add several comment by several recruiters in same time
+
+## Requirement 7: Displayed all emails for a cadidate
+
+**Impact:**
+ - UI
+ - Public API
+ - Compatibility
+ - Concurrent action
+
+### Expected tests:
+**UI Test  (Application Web) :**
+- Check the UI elements on this screen 
+    - To be checked with different language (french, english and other supported languages)
+- Checks that the mail list are ordered by time
+
+**Public API Test:**
+- With the right permission, execute http request to get the candidate email list 
+	 -  check that the comment is added
+   -  check the mandatory query parameter
+ - With restricted permission, you are not allowed to get the candidate email list 
+
+**Compatibiliy Test**
+- Test the screen displaying on different web browsers
+
+## Requirement 8: Send an email to the candidate
+
+**Impact:**
+ - UI
+ - Public API
+ - Concurrent action
+
+### Expected tests:
+**UI Test  (Application Web) :**
+- Check the UI elements on this screen 
+    - To be checked with different language (french, english and other supported languages)
+- Send an email to the candidate and check that the email is displayed in the list after sending 
+  - Add text
+  - Add subject
+  - Add attachment
+- Check the notification is created when you assign yourself to this application  
+- Send an email to the candidate with a template
+
+**Public API Test:**
+- With the right permission, execute http request to post an email
+	 -  check that the comment is added
+   -  check the mandatory query parameter
+ - With restricted permission, you are not allowed to post an email
+
+**Compatibiliy Test**
+- Test the screen displaying on different web browsers
