@@ -140,6 +140,9 @@ NB: no code required for this exercice
 - Edit an exesting candidate and modify the personal information:
   - Check the UI elements on this screen (lastname, firstname, email, phone number, profile picture)
     - To be checked with different language (french, english and other supported languages)
+  - Check error case for each fields:
+    - wrong email
+    - wrong format for the picture imported file
   - Modify all fields and check that this candidate information are corectly saved:
     - Check update notification
     - Check the dashboard card has been updated with the new name
@@ -148,10 +151,30 @@ NB: no code required for this exercice
 - With the right permission, execute http request to update an existing cadidate
 	 -  check that the candidate is created 
    -  check the mandatory query parameter
- - With restricted permission, you are not allowed to updte an existing candidate
+ - With restricted permission, you are not allowed to update an existing candidate
 
 **Compatibiliy Test**
 - Test the screen displaying on different web browsers
 
 **Concurrent test**
-- Edit the same candidate by two recruiters, and update the information in same time
+- Edit the same candidate by several recruiters, and update the information in same time
+
+## Requirement 6: Comment a candidate
+
+**Impact:**
+ - UI
+ - Public API
+ - Concurrent action
+
+**UI Test  (Application Web) :**
+- Create a new comment and check that the comment is created 
+  - Check the comment is displayed and the comment are ordered by time
+
+**Public API Test:**
+- With the right permission, execute http request to add a comment to a candidate
+	 -  check that the comment is added
+   -  check the mandatory query parameter
+ - With restricted permission, you are not allowed to add a comment to a candidate
+
+**Concurrent test**
+- Add several comment by several recruiters in same time
