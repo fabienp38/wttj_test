@@ -9,7 +9,7 @@ The purpose of the test is to create a test plan for the candidate pipeline part
 What particularly interests us in this exercise are the marginal cases that you will mention. 
 We expect pragmatism, so avoid too much detail!
  
-NB: no code required for this exercice
+NB: no code required for this exercise
 
 
 # Test Plan

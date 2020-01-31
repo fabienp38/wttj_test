@@ -1,6 +1,6 @@
 # Exercise 1 : Code & Unit tests
 
-The exercice purpose is to develop a script which returns as an output, the number of offers per profession category
+The exercise purpose is to develop a script which returns as an output, the number of offers per profession category
 and by contract types from two csv files:
 
 1. *(INPUT)* The "technical-test-jobs.csv" file contains a list of few thousand job offers.
@@ -46,11 +46,11 @@ Also, we expect for this exercise to see a minimum of unit tests.
 
 1. Clone the repository wttj_test in a folder
 2. Open a terminal or a console in this folder repository.
-3. Move on exercice1 folder:
+3. Move on exercise1 folder:
     ```Bash
-    $ cd exercice1
+    $ cd exercise1
     ```
-4. In exercice1 folder install gem dependencies
+4. In exercise1 folder install gem dependencies
     ```Bash
     $ bundle install
     ```
