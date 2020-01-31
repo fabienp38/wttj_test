@@ -22,7 +22,7 @@ NB: no code required for this exercice
  - Performance
  - Compatibility
  
-### Expected test:
+### Expected tests:
 **UI Test  (Application Web) :**
  - Check the candidate card  (lastname, firstname, picture, counter)
  - Check that all candidates diplayed correspond to the candidate associated to this offer
@@ -51,7 +51,7 @@ NB: no code required for this exercice
  - Public API
  - Compatibility
  
-### Expected test:
+### Expected tests:
 **UI Test  (Application Web) :**
  - Check the UI elements on this screen (Edit button, tabs, info candidate (firstname, lastname, picture email)...)
  
@@ -61,7 +61,7 @@ NB: no code required for this exercice
 	 -  query param
  - With restricted permission, you are not allowed to get the cadidate information
 
-**Compatibiliy test**
+**Compatibiliy Test**
  - check the screen displaying with different web browsers
 
 ## Requirement 3: Retrieve all the candidate informations
@@ -71,7 +71,7 @@ NB: no code required for this exercice
  - Public API
  - Compatibility
  
-### Expected test:
+### Expected tests:
 **UI Test  (Application Web) :**
  - Check the UI elements on this screen (Edit button, tabs, candidate info  (firstname, lastname, picture email)...)
   - To be checked with different language (french, english and other supported languages)
@@ -84,10 +84,16 @@ NB: no code required for this exercice
 	 -  query param
  - With restricted permission, you are not allowed to get the cadidate information
 
-**Compatibiliy test**
+**Compatibiliy Test**
 - Test the screen displaying on different web browsers
 
 ## Requirement 4: Create a new candidate for a specific job offer
+
+**Impact:**
+ - UI
+ - Public API
+ - Compatibility
+
 **UI Test  (Application Web) :**
  - Check the UI elements on this screen (Edit button, tabs, candidate info (firstname, lastname, picture email)...)
   - To be checked with different language (french, english and other supported languages)
@@ -97,6 +103,7 @@ NB: no code required for this exercice
     - application status 
     - field about the candidate information
   - Fill all the minimum mandatory fields and check that this information are correctly saved
+    - Check the notification is created after the record 
   - Check error case for each fields:
     - wrong email
     - wrong format for the imported files (Resume, picture)
@@ -118,5 +125,33 @@ NB: no code required for this exercice
    -  check the mandatory query parameter
  - With restricted permission, you are not allowed to create the cadidate information
 
-**Compatibiliy test**
+**Compatibiliy Test**
 - Test the screen displaying on different web browsers
+
+## Requirement 5: Update the candidate informations
+
+**Impact:**
+ - UI
+ - Public API
+ - Compatibility
+ - Concurrent action
+
+**UI Test  (Application Web) :**
+- Edit an exesting candidate and modify the personal information:
+  - Check the UI elements on this screen (lastname, firstname, email, phone number, profile picture)
+    - To be checked with different language (french, english and other supported languages)
+  - Modify all fields and check that this candidate information are corectly saved:
+    - Check update notification
+    - Check the dashboard card has been updated with the new name
+
+**Public API Test:**
+- With the right permission, execute http request to update an existing cadidate
+	 -  check that the candidate is created 
+   -  check the mandatory query parameter
+ - With restricted permission, you are not allowed to updte an existing candidate
+
+**Compatibiliy Test**
+- Test the screen displaying on different web browsers
+
+**Concurrent test**
+- Edit the same candidate by two recruiters, and update the information in same time
