@@ -1,4 +1,4 @@
-# Exercice3: Using Cypress
+# Exercise3: Using Cypress
 
 Now that you have completed the perfect test plan, we want to practice a first test scenario using Cypress (if you are not comfortable with this tool, solutions such as Selenium or equivalent are possible: ))
 

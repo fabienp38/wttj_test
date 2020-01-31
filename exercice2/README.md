@@ -1,4 +1,4 @@
-# Exercice2: Test Plan
+# Exercise2: Test Plan
 The purpose of the test is to create a test plan for the candidate pipeline part :
 1. I am on any job stages.
 2. I create any candidate
