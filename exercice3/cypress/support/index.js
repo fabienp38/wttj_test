@@ -17,5 +17,6 @@
 import './commands_session'
 import './commands_param_user'
 import './commands_candidate_form'
+import 'cypress-file-upload';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
