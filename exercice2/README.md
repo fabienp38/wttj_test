@@ -1,6 +1,6 @@
 # Exercice2: Test Plan
 The purpose of the test is to create a test plan for the candidate pipeline part :
-1. I am on any job offers.
+1. I am on any job stages.
 2. I create any candidate
 3. I can retrieve the information about the candidate
 4. I can comment the candidate
@@ -14,7 +14,7 @@ NB: no code required for this exercice
 
 # Test Plan
 
-## Requirement 1: Displaying all candidate for a specific job offer
+## Requirement 1: Displaying all candidate for a specific job stage
 
 **Impact:**
  - UI
@@ -25,7 +25,7 @@ NB: no code required for this exercice
 ### Expected tests:
 **UI Test  (Application Web) :**
  - Check the candidate card  (lastname, firstname, picture, counter)
- - Check that all candidates diplayed correspond to the candidate associated to this offer
+ - Check that all candidates diplayed correspond to the candidate associated to this job stage
  - Check the candidate is displaying in his assigned status column
  - Check the candidate cards that are not updated since few times has a grey tint
  - Check the weighted average of candidate rating
@@ -33,13 +33,13 @@ NB: no code required for this exercice
     - To be checked with different language (french, english and other supported languages)
  
 **Public API Test:**
- - With the right permission, execute get http request to list all candidate for a specific job offer
+ - With the right permission, execute get http request to list all candidate for a specific job stage
 	 -  check json body 
 	 -  query param
 - With restricted permission, you arenot allowed to list all candidates
 
 **Performance Test:**
-- Load a volume of candidate data for a specific job offer and bench the API request ( time, memory usage, cpu) and the displaying of the screen.
+- Load a volume of candidate data for a specific job stage and bench the API request ( time, memory usage, cpu) and the displaying of the screen.
 
 **Compatibiliy test**
  - check the screen displaying with different web browsers
@@ -77,6 +77,7 @@ NB: no code required for this exercice
   - To be checked with different language (french, english and other supported languages)
  - Check the list of candidate applications
  - Check the resume and the cover letter is displayed for a candidate
+ - Check thaht you can't access to the cadidate informations when the bulk edit (Multiple action button) is activated
  
 **Public API Test:**
  - With the right permission, execute http request to get the cadidate information
@@ -87,7 +88,7 @@ NB: no code required for this exercice
 **Compatibiliy Test**
 - Test the screen displaying on different web browsers
 
-## Requirement 4: Create a new candidate for a specific job offer
+## Requirement 4: Create a new candidate for a specific job stage
 
 **Impact:**
  - UI
@@ -108,14 +109,14 @@ NB: no code required for this exercice
   - Check error case for each fields:
     - wrong email
     - wrong format for the imported files (Resume, picture)
- - Check the creation of the same candidate on the another job offer
+ - Check the creation of the same candidate on the another job stage
 
 **UI Test  (Chrome extension) :**
  - Check the UI elements on this screen (Edit button, tabs, candidate info (firstname, lastname, picture email)...)
  - Fill all the fields and check that this informations are correctly saved
     - application status 
     - field about the candidate information
-    - select a job offer
+    - select a job stage
     - add a comment
 - Fill all the minimum mandatory fields and check that this information are correctly saved
   *NB the mandatory field are not the same between chrome extension and application web (Missing email)*
@@ -198,7 +199,7 @@ NB: no code required for this exercice
 
 **Public API Test:**
 - With the right permission, execute http request to get the candidate email list 
-	 -  check that the comment is added
+	 -  check that email list 
    -  check the mandatory query parameter
  - With restricted permission, you are not allowed to get the candidate email list 
 
@@ -225,9 +226,100 @@ NB: no code required for this exercice
 
 **Public API Test:**
 - With the right permission, execute http request to post an email
-	 -  check that the comment is added
+	 -  check that the email is sent
    -  check the mandatory query parameter
  - With restricted permission, you are not allowed to post an email
 
 **Compatibiliy Test**
 - Test the screen displaying on different web browsers
+
+## Requirement 9: Attach document to a candidate 
+
+**Impact:**
+ - UI
+ - Public API
+ - Compatibility
+ - Concurrent action
+
+### Expected tests:
+**UI Test  (Application Web) :**
+- Check the UI elements on this screen 
+    - To be checked with different language (french, english and other supported languages)
+- Check that all document imported for a candidate are displayed
+- Import document with different format and check the restricted format for the imported file
+
+**Public API Test:**
+- With the right permission, execute http request to add a document to the candidate
+	 -  check that the document is added
+   -  check the mandatory query parameter
+ - With restricted permission, you are not allowed to add a document to the candidate
+
+**Compatibiliy Test**
+- Test the upload file document with different web browser
+
+## Requirement 10: Add a rating to a candidate
+
+**Impact:**
+ - UI
+ - Concurrent action
+
+**UI Test  (Application Web) :**
+- Check the UI elements on this screen (tab add a rating and modify the criteria rating)
+    - To be checked with different language (french, english and other supported languages)
+- Add a criteria rating
+- Delete a criteria rating unused
+- Delete a criteria rating used to rate a candidate
+  - A warning message is displayed 
+  - check that the criteria is deleted for the candidate
+- Upddate a criteria ratiing
+  - The criteria has been updated for the candidate
+- Add two rating to the candidate
+  - Check that the rating comment is mandatory
+  - Check when a rate is record with a commment, this comment is displayed in the comment list
+  - Check that the rating displayed in the candidate information matches the weighted average rating
+  - Check that the rating displayed in the candidate card (Pipeline) matches the weighted average rating
+- Update an existing rate and check this modification changes the rate in the candidate information and the candidate card
+
+**Concurrent test**
+- Add or modify the same candidate rate by several recruiters
+
+## Requirement 11: Change status to a candidate (bulk action)
+
+**Impact:**
+ - UI
+ - Public API
+ - Concurrent action
+
+## Requirement 12: Move a candidate to another job stage (bulk action)
+
+**Impact:**
+ - UI
+ - Public API
+ - Concurrent action
+
+## Requirement 13: Move a candidate to another job stage (bulk action)
+
+**Impact:**
+ - UI
+ - Public API
+ - Concurrent action
+
+## Requirement 14: Add a column to the pipeline
+
+**Impact:**
+ - UI
+ - Public API
+ - Concurrent action
+
+## Requirement 14: Remove a column to the pipeline 
+
+**Impact:**
+ - UI
+ - Public API
+ - Concurrent action
+
+
+
+
+
+
