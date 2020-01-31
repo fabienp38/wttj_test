@@ -14,10 +14,7 @@ NB: no code required for this exercice
 
 # Test Plan
 
-StackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible **offline!**
-
-
-## Use case: Displaying all candidate for a specific job offer
+## Requirement 1: Displaying all candidate for a specific job offer
 
 **Impact:**
  - UI ( screen; candidate board fo ar specific job offer)
@@ -28,16 +25,64 @@ StackEdit stores your files in your browser, which means all your files are auto
 ### Expected test:
 **UI Test  (Application Web) :**
  - Check the candidate card  (nam, picture, counter)
- - Check that all candidate diplayed correspond to the candidate associated to this offer
- - Check the  candidate is displaying in his assigned status
- - Check that candidate card not updated since few times has a grey tint
- - Check element of this screen (Button add candidate, Action Multiples ...)
+ - Check that all candidates diplayed correspond to the candidate associated to this offer
+ - Check the candidate is displaying in his assigned status column
+ - Check the candidate cards that are not updated since few times has a grey tint
+ - Check the weighted average of candidate rating
+ - Check the UI elements on this screen (Button add candidate, Action Multiples ...)
+    - To be checked with different language (french, english and other supported languages)
  
-**Public Api Test:**
+**Public API Test:**
  - With the right permission, execute get http request to list all candidate for a specific job offer
 	 -  check json body 
 	 -  query param
+- With restricted permission, you arenot allowed to list all candidates
 
 **Performance Test:**
-- Load a volume of candidate for a specific job offer and bench the api request ( time, memory usage, cpu) and the displaying of the screen.
+- Load a volume of candidate data for a specific job offer and bench the API request ( time, memory usage, cpu) and the displaying of the screen.
 
+**Compatibiliy test**
+-Test the screen displaying on different web browsers
+
+## Requirement 2: Displaying all the candidate informations
+
+**Impact:**
+ - UI ( screen; candidate board fo ar specific job offer)
+ - Public API
+ - Compatibility
+ 
+### Expected test:
+**UI Test  (Application Web) :**
+ - Check the UI elements on this screen (Edit button, tabs, info candidate (firstname, lastname, picture email)...)
+ 
+**Public API Test:**
+ - With the right permission, execute http request to get the cadidate information
+	 -  check json body 
+	 -  query param
+- With restricted permission, you arenot allowed to get the cadidate information
+
+**Compatibiliy test**
+-Test the screen displaying on different web browsers
+
+## Requirement 3: Displaying all the candidate informations
+
+**Impact:**
+ - UI ( screen; candidate board fo ar specific job offer)
+ - Public API
+ - Compatibility
+ 
+### Expected test:
+**UI Test  (Application Web) :**
+ - Check the UI elements on this screen (Edit button, tabs, info candidate (firstname, lastname, picture email)...)
+  - To be checked with different language (french, english and other supported languages)
+ - Check the list of candidate applications
+ - Check the resume and the cover letter is displayed for a candidate
+ 
+**Public API Test:**
+ - With the right permission, execute http request to get the cadidate information
+	 -  check json body 
+	 -  query param
+- With restricted permission, you arenot allowed to get the cadidate information
+
+**Compatibiliy test**
+-Test the screen displaying on different web browsers
