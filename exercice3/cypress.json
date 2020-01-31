@@ -1,13 +1,15 @@
 {
-    "baseUrl":"",
-    "scripts": {
-      "cypress:open": "cypress open"
-    },
-    "standard": {
-      "globals": ["cy", "Cypress", "expect", "assert"]
-    },
-    "env": {
-      "SESSION_ID": ""
-    }
+  "viewportWidth":1000,
+  "viewportHeight":660,  
+  "baseUrl":"",
+  "scripts": {
+    "cypress:open": "cypress open"
+  },
+  "standard": {
+    "globals": ["cy", "Cypress", "expect", "assert"]
+  },
+  "env": {
+    "SESSION_ID": ""
+  }
 
 }
