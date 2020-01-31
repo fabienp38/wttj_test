@@ -1,0 +1,16 @@
+{
+  "profile": {
+    "address": null,
+    "avatar_url": "http://wk.dev/assets/default-avatar-7cbb7b9749a7cf8864001cde13e2a9a94e612bf083430d66ede0966f5bafb296.png",
+    "city": null,
+    "country_code": null,
+    "country_name": null,
+    "email": "test@example.com",
+    "firstname": "Alain",
+    "lastname": "Provist",
+    "phone": null,
+    "subtitle": null,
+    "zip_code": null
+  },
+  "origin": "external"
+}

@@ -4,7 +4,6 @@ context('Test the language for the candidate form', () => {
   beforeEach(() => {
     cy.openSession(String(Cypress.env('SESSION_ID')))
     cy.visit('dashboard/users/edit')
-
   })
 
   it('checks the candidate form with the French language', () => {

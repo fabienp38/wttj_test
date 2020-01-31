@@ -17,6 +17,7 @@ After cloning source code, execute following commands to install and start cypre
 
 ```bash
 npm install cypress --save-dev
+npm install --save-dev cypress-file-upload
 ```
 
 
