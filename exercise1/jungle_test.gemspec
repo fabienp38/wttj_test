@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.authors     = ['fabienp38']
   s.email       = 'fabienpipard@gmail.com'
   s.files       = ['lib/jungle_test.rb']
-  s.homepage    = 'https://github.com/fabienp38/jungle_test/tree/master/exercice1'
+  s.homepage    = 'https://github.com/fabienp38/jungle_test/tree/master/exercise1'
   s.metadata    = { 'source_code_uri' =>
                        'https://github.com/fabienp38/jungle_test' }
   s.add_dependency('csv', '~>3.1.2')

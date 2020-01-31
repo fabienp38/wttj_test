@@ -1,4 +1,4 @@
-# Exercice2: Test Plan
+# Exercise2: Test Plan
 The purpose of the test is to create a test plan for the candidate pipeline part :
 1. I am on any job stages.
 2. I create any candidate
@@ -9,7 +9,7 @@ The purpose of the test is to create a test plan for the candidate pipeline part
 What particularly interests us in this exercise are the marginal cases that you will mention. 
 We expect pragmatism, so avoid too much detail!
  
-NB: no code required for this exercice
+NB: no code required for this exercise
 
 
 # Test Plan
@@ -33,10 +33,10 @@ NB: no code required for this exercice
     - To be checked with different language (french, english and other supported languages)
  
 **Public API Test:**
- - With the right permission, execute get http request to list all candidate for a specific job stage
+ - With the right permission, execute get http request to list all candidates for a specific job stage
 	 -  check json body 
 	 -  query param
-- With restricted permission, you arenot allowed to list all candidates
+- With restricted permission, you are not allowed to list all candidates
 
 **Performance Test:**
 - Load a volume of candidate data for a specific job stage and bench the API request ( time, memory usage, cpu) and the displaying of the screen.
@@ -76,7 +76,7 @@ NB: no code required for this exercice
  - Check the UI elements on this screen (Edit button, tabs, candidate info  (firstname, lastname, picture email)...)
   - To be checked with different language (french, english and other supported languages)
  - Check the list of candidate applications
- - Check the resume and the cover letter is displayed for a candidate
+ - Check the resume and the cover letter are displayed for a candidate
  - Check thaht you can't access to the cadidate informations when the bulk edit (Multiple action button) is activated
  
 **Public API Test:**
@@ -109,7 +109,7 @@ NB: no code required for this exercice
   - Check error case for each fields:
     - wrong email
     - wrong format for the imported files (Resume, picture)
- - Check the creation of the same candidate on the another job stage
+ - Check the creation of the same candidate on another job stage
 
 **UI Test  (Chrome extension) :**
  - Check the UI elements on this screen (Edit button, tabs, candidate info (firstname, lastname, picture email)...)
@@ -149,7 +149,7 @@ NB: no code required for this exercice
   - Modify all fields and check that this candidate information are corectly saved:
     - Check update notification
     - Check the dashboard card has been updated with the new name
-  - Modify status and check in the pipeline that the card move to the right column
+  - Modify status and check in the pipeline that the card move to the expected column
 
 **Public API Test:**
 - With the right permission, execute http request to update an existing cadidate
@@ -161,7 +161,7 @@ NB: no code required for this exercice
 - Test the screen displaying on different web browsers
 
 **Concurrent test**
-- Edit the same candidate by several recruiters, and update  the same information (example status) in same time
+- Edit the same candidate by several recruiters, and update the same information (example status) in same time
 
 ## Requirement 6: Comment a candidate
 
@@ -298,9 +298,9 @@ NB: no code required for this exercice
 ### Expected tests:
 **UI Test  (Application Web) :**
  - Move the candidate card to another status check that the status has changed for this candidate
- - Check that you can't move with the drag and drop when the multiple action (bulk action) is activated
+ - Check that you can't move with the drag and drop, when the multiple action (bulk action) is activated
  - Use the multiple action to change the status of two candidate cards:
-  -  Check that the candidate card are moved in the right column
+  -  Check that the candidate card are moved in the expected column
   -  Diplay candidate information for each moved candidate to check the status
 
 **Concurrent test**
@@ -316,13 +316,13 @@ NB: no code required for this exercice
 ### Expected tests:
 **UI Test  (Application Web) :**
  - With the candidate information screen move a candidate to another job stage
-  - Check that the candidate is moved in a right job stage
+  - Check that the candidate is moved in the expected job stage
  - With the multiple action move a candidate to another job stage
-  - Check that all the candidatare moved in a right job stage
+  - Check that all the candidatare moved in the expected job stage
 
 **Public API Test:**
 - With the right permission, execute http request to move a candidate to another job stage
-	 -  Check that the candidate is moved in a right job stage
+	 -  Check that the candidate is moved in the expected job stage
    -  check the mandatory query parameter
  - With restricted permission, you are not allowed to move a candidate to another job stage
 

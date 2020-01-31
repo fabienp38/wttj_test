@@ -15,6 +15,7 @@ module JungleTest
   # Runner Class for the JungleTest gem
   class Runner
     class << self
+      # This function returns a hash with hearders and content of table
       def build_content_matrix
         # Initialize datatable for two csv files
         dt_p = JungleTest::DataTable.csv_to_datatable(CSV_PROF)
@@ -23,6 +24,8 @@ module JungleTest
         # Create hash that contains profession category by id
         cat = JungleTest::Professions.new(dt_p)
         dt_merged = cat.merge_prof_contract(dt_j)
+
+        # Create hash that contains the first line (total) of the table
         line_total = cat.total_by_contract_type(dt_merged)
         mat = JungleTest::MatrixBuilder.new(dt_merged)
         content = mat.content_line_matrix(line_total, dt_merged)
@@ -30,23 +33,23 @@ module JungleTest
         { headers: headers, content: content }
       end
 
-      def draw_headers(columns)
-        JungleTest::MatrixDraw.puts_divider(columns)
-        JungleTest::MatrixDraw.puts_header(columns)
-        JungleTest::MatrixDraw.puts_divider(columns)
+      def draw_headers(columns_info)
+        JungleTest::MatrixDraw.puts_divider(columns_info)
+        JungleTest::MatrixDraw.puts_header(columns_info)
+        JungleTest::MatrixDraw.puts_divider(columns_info)
       end
 
       def execute
         headers = build_content_matrix[:headers]
         content = build_content_matrix[:content]
-        columns = JungleTest::MatrixDraw.columns_spec(headers, content)
-        draw_headers(columns)
+        columns_info = JungleTest::MatrixDraw.columns_spec(headers, content)
+        draw_headers(columns_info)
         res = {}
         content.each do |ct|
           headers.each_key { |key| res[key] = ct[key].to_s.upcase }
-          JungleTest::MatrixDraw.puts_line(res, columns)
+          JungleTest::MatrixDraw.puts_line(res, columns_info)
         end
-        JungleTest::MatrixDraw.puts_divider(columns)
+        JungleTest::MatrixDraw.puts_divider(columns_info)
       end
     end
   end
